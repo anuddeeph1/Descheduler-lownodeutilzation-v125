@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-pvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpd
+        image: anuddeeph/apache-webserver-php
+        resources:
+          requests:
+            memory: 100Mi
+            cpu: 150m
+          limits:
+            memory: 1200Mi
+            cpu: 1500m
+        volumeMounts:
+        - name: my-volume1
+          mountPath: /data1
+      volumes:
+      - name: my-volume1
+        persistentVolumeClaim:
+          claimName: pvc1
