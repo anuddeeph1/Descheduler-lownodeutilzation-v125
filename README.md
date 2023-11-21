@@ -23,3 +23,5 @@ kubectl create -f base/rbac.yaml
 kubectl create -f base/configmap.yaml
 kubectl create -f deployment/deployment.yaml
 ```
+
+https://github.com/kubernetes-sigs/descheduler/issues/994
